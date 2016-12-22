@@ -598,35 +598,3 @@ if (typeof FileAPI === 'undefined') {
         clientSideCropperConfig:updateClientSideCropperConfig
     });
 })(jQuery);
-
-//(function($) {
-//    $(document).ready(function(){
-//        $.fn.clientSideCropperConfig(
-//            'generateCropModalDivOptions',
-//            {
-//                titleText: '1title',
-//                closeBtnText: '2Exit',
-//                saveBtnText: '3submit'
-//            }
-//        );
-//        $('#imageDiv1').clientSideCropper({
-//            url:'ctrl.php',
-//            data:{
-//                type:'rectangle'
-//            },
-//            cropModalDivId: 'auto',
-//            minWidth:200,
-//            minHeight:200,
-//            previewHeight:200,
-//            previewWidth:200,
-//            onError: function(reason){
-//                alert(reason)
-//            },
-//            onSuccess: function(serverResponse){
-//                console.log(serverResponse)
-//            },
-//            lockModalDivId: 'lockModal'
-//        });
-//        $('#imageDiv2').clientSideCropper();
-//    })
-//})(jQuery);
