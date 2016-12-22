@@ -1,0 +1,23 @@
+{
+  "name": "client-side-cropper",
+  "authors": [
+    "Sergey Mikhaylov <serg@msoinvest.com>"
+  ],
+  "description": "Client side cropper based on MailRu FileApi and Bootstrap modal",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "jquery.fileapi": "^0.4.11"
+  }
+}

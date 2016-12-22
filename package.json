@@ -1,0 +1,18 @@
+{
+  "name": "client-side-cropper",
+  "version": "1.0.0",
+  "description": "Client side cropper based on MailRu FileApi and Bootstrap modal",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-minify": "0.0.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergey Mikhaylov <serg@msoinvest.com>",
+  "license": "ISC"
+}
