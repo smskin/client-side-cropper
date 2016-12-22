@@ -143,7 +143,7 @@ if (typeof FileAPI === 'undefined') {
         options = generateCropModalDivOptions;
         var id = 'clientSideCropperCropModalDiv_'+generatedModalDivCounter;
         var html =
-            '<div class="modal fade" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="'+id+'Label" data-backdrop="static" data-keyboard="false">'+
+            '<div class="modal fade client_side_crop_modal_div" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="'+id+'Label" data-backdrop="static" data-keyboard="false">'+
                 '<div class="modal-dialog" role="document">'+
                     '<div class="modal-content">'+
                         '<div class="modal-header">'+
@@ -194,13 +194,14 @@ if (typeof FileAPI === 'undefined') {
         browseDivNotFount: 'Browse div not found. Required element with class .js-browse',
         fileInputNotFount: 'File input element not found. Required input[type="file"]',
         imageAreaInCropModalDivNotFound: 'Not found image area element in crop modal interface. Require div with class .js-img',
-        submitButtonInCropModalDivNotFound: 'Not fount submit button in crop modal interface. Require button[type="submit"]'
+        submitButtonInCropModalDivNotFound: 'Not fount submit button in crop modal interface. Require button[type="submit"]',
+        imageTypeNotDefined: 'Image type not defined'
     };
 
     var defArgs = {
         url:'',
         data:{
-            type:'circle'
+            type:'image'
         },
         cropModalDivId: function(){
             return generateCropModalDiv()
@@ -358,6 +359,10 @@ if (typeof FileAPI === 'undefined') {
             config.onError(Exceptions.actionUrlRequired);
         }
 
+        if (!config.data.type){
+            config.onError(Exceptions.imageTypeNotDefined);
+        }
+
         var $cropModalDiv = $('#'+config.cropModalDivId);
         if (!$cropModalDiv.length){
             config.onError(Exceptions.cropModalDivNotExists(config.cropModalDivId));
@@ -436,6 +441,8 @@ if (typeof FileAPI === 'undefined') {
 
         var $cropModalDiv = $('#'+config.cropModalDivId);
 
+        $cropButton.append('<input type="hidden" name="'+ config.data.type +'">');
+
         return {
             objects: {
                 cropModalDiv: $cropModalDiv,
@@ -498,6 +505,8 @@ if (typeof FileAPI === 'undefined') {
             onFileComplete: function(evt,uiEvt){
                 if (!uiEvt.error){
                     if (uiEvt.result.result){
+                        var id = uiEvt.result.id;
+                        $cropButton.find('input[name="'+ config.data.type +'"]').val(id);
                         var src = uiEvt.result.image;
                         $uploadedDiv
                             .html('<img src="'+src+'" style="height:'+config.previewHeight+'px; width:'+config.previewWidth+'px" />')
@@ -590,34 +599,34 @@ if (typeof FileAPI === 'undefined') {
     });
 })(jQuery);
 
-(function($) {
-    $(document).ready(function(){
-        $.fn.clientSideCropperConfig(
-            'generateCropModalDivOptions',
-            {
-                titleText: '1title',
-                closeBtnText: '2Exit',
-                saveBtnText: '3submit'
-            }
-        );
-        $('#imageDiv1').clientSideCropper({
-            url:'ctrl.php',
-            data:{
-                type:'rectangle'
-            },
-            cropModalDivId: 'auto',
-            minWidth:200,
-            minHeight:200,
-            previewHeight:200,
-            previewWidth:200,
-            onError: function(reason){
-                alert(reason)
-            },
-            onSuccess: function(serverResponse){
-                console.log(serverResponse)
-            },
-            lockModalDivId: 'lockModal'
-        });
-        $('#imageDiv2').clientSideCropper();
-    })
-})(jQuery);
+//(function($) {
+//    $(document).ready(function(){
+//        $.fn.clientSideCropperConfig(
+//            'generateCropModalDivOptions',
+//            {
+//                titleText: '1title',
+//                closeBtnText: '2Exit',
+//                saveBtnText: '3submit'
+//            }
+//        );
+//        $('#imageDiv1').clientSideCropper({
+//            url:'ctrl.php',
+//            data:{
+//                type:'rectangle'
+//            },
+//            cropModalDivId: 'auto',
+//            minWidth:200,
+//            minHeight:200,
+//            previewHeight:200,
+//            previewWidth:200,
+//            onError: function(reason){
+//                alert(reason)
+//            },
+//            onSuccess: function(serverResponse){
+//                console.log(serverResponse)
+//            },
+//            lockModalDivId: 'lockModal'
+//        });
+//        $('#imageDiv2').clientSideCropper();
+//    })
+//})(jQuery);

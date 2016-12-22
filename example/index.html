@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example of cropper</title>
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link type="text/css" rel="stylesheet" href="/bower_components/jquery.fileapi/jcrop/jquery.Jcrop.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        window.FileAPI = {
+            debug: true // debug mode
+            , staticPath: '/bower_components/jquery.fileapi/FileAPI/' // path to *.swf
+        };
+    </script>
+    <script type="text/javascript" src="/bower_components/jquery.fileapi/FileAPI/FileAPI.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jquery.fileapi/FileAPI/FileAPI.exif.js"></script>
+    <script type="text/javascript" src="/bower_components/jquery.fileapi/jquery.fileapi.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jquery.fileapi/jcrop/jquery.Jcrop.min.js"></script>
+    <script type="text/javascript" src="/dist/jquery.client-side-cropper.min.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</head>
+<body>
+
+<div class="modal fade" id="customCropModalDiv" tabindex="-1" role="dialog" aria-labelledby="customCropModalDivLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="customCropModalDivLabel">Custom modal title</h4>
+            </div>
+            <div class="modal-body">
+                <div class="js-img"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+                <button type="submit" class="btn btn-primary js-upload">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Crop interface based on MailRu FileApi and Bootstrap modal</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Инициализация инферфеса с указанием data-аттрибутов</h2>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>В данном примере модальное окно будет сгенерировано автоматически</p>
+                    <div id="elementWithDataAttributes" class="fileinput fileinput-new"
+                         data-action="server.php"
+                         data-imageType="image1"
+                         data-minWidth="400"
+                         data-minHeight="400"
+                         data-previewHeight = "200"
+                         data-previewWidth = "200"
+                         data-lockModalDivId="lockModal"
+                    >
+                        <div class="fileinput-preview thumbnail uploaded">
+
+                        </div>
+
+                        <div class="fileinput-preview thumbnail js-preview">
+
+                        </div>
+                        <div class="js-fileapi-wrapper">
+                            <span class="btn btn-default btn-file js-browse">
+                                <span class="fileinput-new">Select image</span>
+                                <input type="file" name="image" accept="image/*">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>В данном примере модальное явно указано модальное окно для модификации (customCropModalDiv). Есть возможность кастомизации.</p>
+                    <div id="elementWithDataAttributesAndCustomModal" class="fileinput fileinput-new"
+                         data-action="server.php"
+                         data-imageType="image2"
+                         data-minWidth="400"
+                         data-minHeight="400"
+                         data-previewHeight = "200"
+                         data-previewWidth = "200"
+                         data-lockModalDivId="lockModal"
+                         data-cropModalDivId="customCropModalDiv"
+                    >
+                        <div class="fileinput-preview thumbnail uploaded">
+
+                        </div>
+
+                        <div class="fileinput-preview thumbnail js-preview">
+
+                        </div>
+                        <div class="js-fileapi-wrapper">
+                    <span class="btn btn-default btn-file js-browse">
+                        <span class="fileinput-new">Select image</span>
+                        <input type="file" name="image" accept="image/*">
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Инициализация инферфеса с с передачей аттрибутов в JS коде</h2>
+                <div id="elementWithConfig" class="fileinput fileinput-new">
+                    <div class="fileinput-preview thumbnail uploaded">
+
+                    </div>
+
+                    <div class="fileinput-preview thumbnail js-preview">
+
+                    </div>
+                    <div class="js-fileapi-wrapper">
+                    <span class="btn btn-default btn-file js-browse">
+                        <span class="fileinput-new">Select image</span>
+                        <input type="file" name="image" accept="image/*">
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
