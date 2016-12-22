@@ -1,7 +1,7 @@
 #Client side crop image interface based on MailRu FileApi and Bootstrap Modal
 
 **Author(s):**
-* Sergey Mikahylov, smskin@rkmail.ru)
+* Sergey Mikhaylov, smskin@rkmail.ru
 
 ## Requirements
 1. jQuery plugin >= 3.1.1
