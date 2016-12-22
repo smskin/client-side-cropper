@@ -1,7 +1,7 @@
 {
   "name": "client-side-cropper",
   "authors": [
-    "Sergey Mikhaylov <serg@msoinvest.com>"
+    "Sergey Mikhaylov <smskin@rkmail.ru>"
   ],
   "description": "Client side cropper based on MailRu FileApi and Bootstrap modal",
   "main": "",
