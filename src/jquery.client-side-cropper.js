@@ -180,7 +180,7 @@ if (typeof FileAPI === 'undefined') {
     }
 
     var Exceptions = {
-        actionUrlRequired: 'Action url required. Use data attribute "data-url" or set in js initialize script',
+        actionUrlRequired: 'Action url required. Use data attribute "data-action" or set in js initialize script',
         cropModalDivNotExists: function(id){
             return 'cropModalDiv not exist (UID: '+id+')';
         },
@@ -441,7 +441,10 @@ if (typeof FileAPI === 'undefined') {
 
         var $cropModalDiv = $('#'+config.cropModalDivId);
 
-        $cropButton.append('<input type="hidden" name="'+ config.data.type +'">');
+        var $imageIdInput = $cropButton.find('input[name="'+ config.data.type +'"]');
+        if (!$imageIdInput.length){
+            $cropButton.append('<input type="hidden" name="'+ config.data.type +'">');
+        }
 
         return {
             objects: {
